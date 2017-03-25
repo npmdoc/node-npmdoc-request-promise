@@ -2,6 +2,7 @@
     "buildNpmdoc":"request-promise",
     "devDependencies": {
         "request-promise": "*",
+        "request": "^2.34",
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "utility2": "kaizhu256/node-utility2#alpha"
     },
