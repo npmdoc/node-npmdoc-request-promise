@@ -193,6 +193,12 @@
 
         </li>
 
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">request-promise.</span>errors</span>
+
+        </li>
+
     </ol></li>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.request-promise.Request">module request-promise.Request</a><ol>
@@ -524,6 +530,37 @@
             <a class="apidocElementLiA" href="#apidoc.element.request-promise.Request.prototype.write">
             function <span class="apidocSignatureSpan">request-promise.Request.prototype.</span>write
             <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.request-promise.errors">module request-promise.errors</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.request-promise.errors.RequestError">
+            function <span class="apidocSignatureSpan">request-promise.errors.</span>RequestError
+            <span class="apidocSignatureSpan">(cause, options, response)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.request-promise.errors.StatusCodeError">
+            function <span class="apidocSignatureSpan">request-promise.errors.</span>StatusCodeError
+            <span class="apidocSignatureSpan">(statusCode, body, options, response)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.request-promise.errors.TransformError">
+            function <span class="apidocSignatureSpan">request-promise.errors.</span>TransformError
+            <span class="apidocSignatureSpan">(cause, options, response)</span>
             </a>
 
         </li>
@@ -960,6 +997,8 @@ just the response body
  with a 2xx status code
 ...</pre></li>
     </ul>
+
+
 
 
 
@@ -2425,6 +2464,89 @@ uses native ES6 promises instead.
   if (self.req) {
     return self.req.write.apply(self.req, arguments)
   }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.request-promise.errors" id="apidoc.module.request-promise.errors">module request-promise.errors</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.request-promise.errors.RequestError" id="apidoc.element.request-promise.errors.RequestError">
+        function <span class="apidocSignatureSpan">request-promise.errors.</span>RequestError
+        <span class="apidocSignatureSpan">(cause, options, response)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function RequestError(cause, options, response) {
+
+    this.name = &#x27;RequestError&#x27;;
+    this.message = String(cause);
+    this.cause = cause;
+    this.error = cause; // legacy attribute
+    this.options = options;
+    this.response = response;
+
+    if (Error.captureStackTrace) { // required for non-V8 environments
+        Error.captureStackTrace(this);
+    }
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.request-promise.errors.StatusCodeError" id="apidoc.element.request-promise.errors.StatusCodeError">
+        function <span class="apidocSignatureSpan">request-promise.errors.</span>StatusCodeError
+        <span class="apidocSignatureSpan">(statusCode, body, options, response)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function StatusCodeError(statusCode, body, options, response) {
+
+    this.name = &#x27;StatusCodeError&#x27;;
+    this.statusCode = statusCode;
+    this.message = statusCode + &#x27; - &#x27; + (JSON &#x26;&#x26; JSON.stringify ? JSON.stringify(body) : body);
+    this.error = body; // legacy attribute
+    this.options = options;
+    this.response = response;
+
+    if (Error.captureStackTrace) { // required for non-V8 environments
+        Error.captureStackTrace(this);
+    }
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.request-promise.errors.TransformError" id="apidoc.element.request-promise.errors.TransformError">
+        function <span class="apidocSignatureSpan">request-promise.errors.</span>TransformError
+        <span class="apidocSignatureSpan">(cause, options, response)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function TransformError(cause, options, response) {
+
+    this.name = &#x27;TransformError&#x27;;
+    this.message = String(cause);
+    this.cause = cause;
+    this.error = cause; // legacy attribute
+    this.options = options;
+    this.response = response;
+
+    if (Error.captureStackTrace) { // required for non-V8 environments
+        Error.captureStackTrace(this);
+    }
+
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
